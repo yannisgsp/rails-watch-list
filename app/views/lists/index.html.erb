@@ -1,0 +1,13 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12">
+      <ul class="list-group">
+        <% @lists.each do |list| %>
+          <li class="list-group-item">
+            <%= link_to list.name, list_path(list), class: "text-decoration-none text-dark" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
