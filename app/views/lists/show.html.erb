@@ -1,32 +1,24 @@
 <div class="container mt-5">
-  <div class="row">
-    <div class="col-12 text-center mb-4">
-      <h1 class="display-4"><%= @list.name %></h1>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6 offset-md-3">
-      <p><strong>Name :</strong> <%= @list.name %></p>
-    </div>
-  </div>
-    <hr>
-  <div class="row">
-    <div class="col-md-6 offset-md-3">
-      <h3>Bookmarks</h3>
+  <h1><%= @list.name %></h1>
+  <hr>
+  <div class="container mt-5 d-flex">
       <% @list.bookmarks.each do |bookmark| %>
-          <div class="card mb-3">
-          <img class="card-img-top" src="<%= bookmark.movie.poster_url %>" alt="<%= bookmark.movie.title %>'s poster">
-            <div class="card-body">
-              <p class="card-text"><%= bookmark.movie.title%> - <%= bookmark.comment %></p>
-              <%= link_to 'Delete', list_bookmark_path(@list, bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?!"}, class: 'btn btn-danger btn-sm' %>
-            </div>
+          <div class="card m-4" style="width: 16rem;">
+              <img class="card-img-top" src="<%= bookmark.movie.poster_url %>" alt="<%= bookmark.movie.title %>'s poster">
+                <div class="card-body">
+                  <p class="card-text"><strong><%= bookmark.movie.title%></strong></p>
+                  <p class="card-text"><%= bookmark.comment %></p>
+                  <p class="card-text"><strong>Rating:</strong> <%= bookmark.movie.rating %></p>
+                  <%= link_to 'Delete', list_bookmark_path(@list, bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?!"}, class: 'btn btn-danger btn-sm' %>
+                </div>
           </div>
-       <% end %>
-      <hr>
-      <h3>Add a Bookmark</h3>
-      <div>
-      <%= render "bookmarks/form", list: @list, bookmark: @bookmark %>
-      </div>
-    </div>
+          <% end %>
   </div>
+  <hr class="col-12">
+  <h3>Add a movie</h3>
+  <br>
+  <div>
+  <%= render "bookmarks/form", list: @list, bookmark: @bookmark %>
+  </div>
+  <br>
 </div>
