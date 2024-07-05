@@ -17,7 +17,7 @@
           <div class="card mb-3">
             <div class="card-body">
               <p class="card-text"><%= bookmark.movie.title%> - <%= bookmark.comment %></p>
-              <%= link_to 'Delete', list_bookmark_path(@list, bookmark), data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn btn-danger btn-sm' %>
+              <%= link_to 'Delete', list_bookmark_path(@list, bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?!"}, class: 'btn btn-danger btn-sm' %>
             </div>
           </div>
        <% end %>
